@@ -46,11 +46,7 @@ $(document).ready(function(){
   		});
 
 
-		$( "#results-af" ).on('click', function(key) {
-			
-
-
-		});
+		
 
 
 });
