@@ -46,6 +46,23 @@ $(main).on('pageinit', function(){
   		});
 
 
+
+
+  		$(function(){
+  			$('#results_af').on('click', function(){
+
+  				$.ajax({
+  					url: 'javascript/json/JSONdata.php',
+  					type: 'GET',
+  					dataType: 'jsonp',
+  					success: function (result){
+  						console.log(result);
+  					}
+				});
+			return false;
+			});
+
+		});
 		
 
 
