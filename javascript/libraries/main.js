@@ -4,7 +4,7 @@ Deliverable 1
 Add Player App
 ASDI 1402
 */
-$(document).ready(function(){ 
+$(main).on('pageinit', function(){ 
 
 
 
