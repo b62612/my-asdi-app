@@ -46,14 +46,18 @@ $(main).on('pageinit', function(){
   		});
   		
   			$('#results_af').on('click', function(){
+  			var url = "json/JSONdata.json";
 
-  				$.getJSON( "json/JSONdata.json", function(data) {
+  				$.ajax(url, { 
+  				dataType: "json",
+  				data: "GET",
+  				success: function(data) {
   				 successCallback(data); 
-               
-			
+               }
+			 
 			}); 
 
-		
+		});
 				function successCallback(data){
 					
 
@@ -67,13 +71,11 @@ $(main).on('pageinit', function(){
                     displayStr += '</li>';
                 }
 
-               
-
                 $('#jdisplay ul').append(displayStr);
             };
 
 
-	});
+	
 
 });
 
