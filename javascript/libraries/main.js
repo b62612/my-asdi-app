@@ -1,9 +1,8 @@
-/*
-Ejiroghene B. Efevberha
+/*Ejiroghene B. Efevberha
 Deliverable 1
 Add Player App
-ASDI 1402
-*/
+ASDI 1402*/
+
 $(main).on('pageinit', function(){ 
 
 
@@ -47,7 +46,7 @@ $(main).on('pageinit', function(){
   		
   			$('#results_af').on('click', function(){
 
-  				$.getJSON( "json/JSONdata.json", function(data) {
+  				$.getJSON( "/my-asdi-app/javascript/libraries/json/JSONdata.json", function(data) {
   				 successCallback(data); 
                
 			
@@ -59,11 +58,13 @@ $(main).on('pageinit', function(){
 
 			 var displayStr = '';
                 for(var i in data) {
-                    displayStr += '<li>';
+                    displayStr += '<li data-icon=' + '"info"'  +' class="namelists ui-li-static ui-body-inherit ui-first-child">';
+                    displayStr += '<a href=' + '"#ln' + data[i].lastname + '">';
                     displayStr += '<h3>' + data[i].lastname + ' ' + data[i].firstname + '</h3>';
                     displayStr += '<p style="font-weight:bold">' + "Current Club:" + '</p>';
                     displayStr += '<p>' + data[i].club + '</p>';
                     displayStr += '<p>' + data[i].date + '</p>';
+                    displayStr += '</a>'
                     displayStr += '</li>';
                 }
 
@@ -74,6 +75,38 @@ $(main).on('pageinit', function(){
 
 
 	});
+			
+				$(this).on('click', '.namelists', function(){
+
+				$.ajax({
+  				type: "GET",
+  				dataType: "xml",
+  				url: "/my-asdi-app/BIOdata.xml",
+  				success: parseXml 
+				});
+
+  				function parseXml(xml){
+  					var fetch = $(xml).children().html();
+  					
+  						var displayBio = '';
+  							displayBio += '<li>';
+							displayBio += fetch;
+							displayBio += '</li>';
+  						$('#results_af').after(displayBio);
+  						$('#jdisplay').remove();
+  					
+					
+  			    	
+  			
+
+
+
+ 			
+			};
+
+
+
+});
 
 });
 
